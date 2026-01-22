@@ -1,6 +1,0 @@
-{
-  "buildCommand": "cd seed123/seed-main && npm install && npm run build",
-  "outputDirectory": "seed123/seed-main/dist",
-  "installCommand": "cd seed123/seed-main && npm install",
-  "framework": "vite"
-}
