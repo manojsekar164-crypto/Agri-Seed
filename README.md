@@ -2,7 +2,7 @@
 
 > A modern e-commerce platform for premium quality seeds tailored for Indian farmers and gardeners.
 
-[![Live Demo](https://img.shields.io/badge/demo-live-success)](https://your-vercel-url.vercel.app)
+[![Live Demo](https://img.shields.io/badge/demo-live-success)](https://agri-seed.vercel.app)
 [![GitHub](https://img.shields.io/badge/github-repository-blue)](https://github.com/manojsekar164-crypto/Agri-Seed)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
