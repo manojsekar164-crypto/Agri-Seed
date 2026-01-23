@@ -323,7 +323,6 @@ export const products: Product[] = [
     dailyLimit: '1/2 teaspoon per day',
     precautions: 'Pregnant women should consult doctor',
     description: 'Reduces hair fall and improves hair density'
-  }
   },
 
   // Skin Care Seeds
