@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Heart, Brain, Activity, Bone, Shield, Scale, Sparkles, ChevronLeft, ChevronRight, Star, User } from 'lucide-react';
+import { Heart, Brain, Activity, Bone, Shield, Scale, Sparkles, Gem, ChevronLeft, ChevronRight, Star, User } from 'lucide-react';
 
 const carouselImages = [
   'https://images.pexels.com/photos/1595104/pexels-photo-1595104.jpeg?auto=compress&cs=tinysrgb&w=1200',
@@ -58,6 +58,13 @@ const categories = [
     path: '/products/hair-health',
     color: 'from-pink-500 to-rose-600',
     image: 'https://images.pexels.com/photos/4033325/pexels-photo-4033325.jpeg?auto=compress&cs=tinysrgb&w=400'
+  },
+  {
+    name: 'Skin Care Seeds',
+    icon: Gem,
+    path: '/products/skin-care',
+    color: 'from-rose-500 to-pink-600',
+    image: 'https://images.pexels.com/photos/1120575/pexels-photo-1120575.jpeg?auto=compress&cs=tinysrgb&w=400'
   }
 ];
 

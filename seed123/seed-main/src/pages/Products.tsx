@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { products, getCategoryProducts } from '../data/products';
 import ProductCard from '../components/ProductCard';
-import { Search, Filter, Heart, Brain, Activity, Bone, Shield, Scale, Sparkles } from 'lucide-react';
+import { Search, Filter, Heart, Brain, Activity, Bone, Shield, Scale, Sparkles, Gem } from 'lucide-react';
 
 const categoryInfo = {
   'heart-health': {
@@ -46,6 +46,12 @@ const categoryInfo = {
     icon: Sparkles,
     description: 'Nourish your hair from within - reduce fall, boost growth',
     color: 'from-pink-500 to-rose-600'
+  },
+  'skin-care': {
+    name: 'Skin Care Seeds',
+    icon: Gem,
+    description: 'Radiant skin from within - brighten, hydrate, anti-aging',
+    color: 'from-rose-500 to-pink-600'
   },
   all: {
     name: 'All Health Seeds',
@@ -176,6 +182,16 @@ const Products = () => {
             }`}
           >
             ✨ Hair Health
+          </Link>
+          <Link
+            to="/products/skin-care"
+            className={`px-4 py-2 rounded-lg font-semibold transition-all ${
+              currentCategory === 'skin-care'
+                ? 'bg-rose-600 text-white'
+                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-rose-100 dark:hover:bg-gray-700'
+            }`}
+          >
+            💎 Skin Care
           </Link>
         </div>
 

@@ -11,6 +11,7 @@ import Checkout from './pages/Checkout';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import HairCare from './pages/HairCare';
+import SkinCare from './pages/SkinCare';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
                 <Route path="/products" element={<Products />} />
                 <Route path="/products/:category" element={<Products />} />
                 <Route path="/hair-care" element={<HairCare />} />
+                <Route path="/skin-care" element={<SkinCare />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/wishlist" element={<Wishlist />} />
                 <Route path="/checkout" element={<Checkout />} />
