@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Sprout, Leaf, Flower2, Flower, ChevronLeft, ChevronRight, Star, User } from 'lucide-react';
+import { Heart, Brain, Activity, Bone, Shield, Scale, ChevronLeft, ChevronRight, Star, User } from 'lucide-react';
 
 const carouselImages = [
   'https://images.pexels.com/photos/1595104/pexels-photo-1595104.jpeg?auto=compress&cs=tinysrgb&w=1200',
@@ -11,40 +11,54 @@ const carouselImages = [
 
 const categories = [
   {
-    name: 'Vegetable Seeds',
-    icon: Sprout,
-    path: '/products/vegetable',
-    color: 'from-green-500 to-green-600',
-    image: 'https://images.pexels.com/photos/1327838/pexels-photo-1327838.jpeg?auto=compress&cs=tinysrgb&w=400'
+    name: 'Heart Health Seeds',
+    icon: Heart,
+    path: '/products/heart-health',
+    color: 'from-red-500 to-pink-600',
+    image: 'https://images.pexels.com/photos/1295572/pexels-photo-1295572.jpeg?auto=compress&cs=tinysrgb&w=400'
   },
   {
-    name: 'Fruit Seeds',
-    icon: Leaf,
-    path: '/products/fruit',
-    color: 'from-orange-500 to-red-500',
-    image: 'https://images.pexels.com/photos/1153655/pexels-photo-1153655.jpeg?auto=compress&cs=tinysrgb&w=400'
+    name: 'Brain Health Seeds',
+    icon: Brain,
+    path: '/products/brain-health',
+    color: 'from-purple-500 to-indigo-600',
+    image: 'https://images.pexels.com/photos/1435735/pexels-photo-1435735.jpeg?auto=compress&cs=tinysrgb&w=400'
   },
   {
-    name: 'Flower Seeds',
-    icon: Flower2,
-    path: '/products/flower',
-    color: 'from-pink-500 to-purple-500',
-    image: 'https://images.pexels.com/photos/36729/marigold-flower-plant-orange.jpg?auto=compress&cs=tinysrgb&w=400'
+    name: 'Diabetes Control Seeds',
+    icon: Activity,
+    path: '/products/diabetes-control',
+    color: 'from-blue-500 to-cyan-600',
+    image: 'https://images.pexels.com/photos/6489052/pexels-photo-6489052.jpeg?auto=compress&cs=tinysrgb&w=400'
   },
   {
-    name: 'Herbal Seeds',
-    icon: Flower,
-    path: '/products/herb',
+    name: 'Bone Strength Seeds',
+    icon: Bone,
+    path: '/products/bone-strength',
+    color: 'from-amber-500 to-orange-600',
+    image: 'https://images.pexels.com/photos/4033324/pexels-photo-4033324.jpeg?auto=compress&cs=tinysrgb&w=400'
+  },
+  {
+    name: 'Immunity Boost Seeds',
+    icon: Shield,
+    path: '/products/immunity-boost',
+    color: 'from-green-500 to-emerald-600',
+    image: 'https://images.pexels.com/photos/4198933/pexels-photo-4198933.jpeg?auto=compress&cs=tinysrgb&w=400'
+  },
+  {
+    name: 'Weight Management Seeds',
+    icon: Scale,
+    path: '/products/weight-management',
     color: 'from-teal-500 to-green-600',
-    image: 'https://images.pexels.com/photos/4750270/pexels-photo-4750270.jpeg?auto=compress&cs=tinysrgb&w=400'
+    image: 'https://images.pexels.com/photos/5503116/pexels-photo-5503116.jpeg?auto=compress&cs=tinysrgb&w=400'
   }
 ];
 
 const testimonials = [
   {
-    name: 'Ramesh Kumar',
-    location: 'Punjab',
-    text: 'Best quality seeds I have purchased! My tomato harvest doubled this season.',
+    name: 'Priya Sharma',
+    location: 'Mumbai',
+    text: 'These health seeds have transformed my wellness journey. My cholesterol levels improved significantly!',
     rating: 5
   },
   {
@@ -117,10 +131,10 @@ const Home = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-2xl text-white">
               <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in">
-                Welcome to AgriSeed Shop
+                Natural Seeds for Better Health 🌱
               </h1>
               <p className="text-lg md:text-xl mb-8 text-gray-200">
-                Premium quality seeds for Indian farmers and gardeners
+                Discover seeds that support heart health, immunity, digestion, and overall wellness
               </p>
               <Link
                 to="/products"
@@ -159,7 +173,7 @@ const Home = () => {
             Shop by Category
           </h2>
           <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Choose from our wide selection of premium quality seeds for vegetables, fruits, flowers, and herbs
+            Explore seeds by health benefit - from heart care to immunity boost, find the perfect seeds for your wellness goals
           </p>
         </div>
 

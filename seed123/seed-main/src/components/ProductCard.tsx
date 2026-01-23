@@ -68,10 +68,12 @@ const ProductCard = ({ product }: ProductCardProps) => {
           {product.description}
         </p>
 
-        <div className="flex items-center justify-between mb-3">
-          <span className="text-xs text-green-700 dark:text-green-400 bg-green-100 dark:bg-green-900/30 px-2 py-1 rounded-full">
-            {product.benefits}
-          </span>
+        <div className="flex flex-wrap gap-1 mb-3">
+          {product.healthBenefits.slice(0, 2).map((benefit, index) => (
+            <span key={index} className="text-xs text-green-700 dark:text-green-400 bg-green-100 dark:bg-green-900/30 px-2 py-1 rounded-full">
+              {benefit}
+            </span>
+          ))}
         </div>
 
         <div className="flex items-center justify-between">

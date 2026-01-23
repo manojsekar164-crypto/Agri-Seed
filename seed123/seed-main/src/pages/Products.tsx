@@ -2,37 +2,49 @@ import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { products, getCategoryProducts } from '../data/products';
 import ProductCard from '../components/ProductCard';
-import { Search, Filter, Sprout, Leaf, Flower2, Flower } from 'lucide-react';
+import { Search, Filter, Heart, Brain, Activity, Bone, Shield, Scale } from 'lucide-react';
 
 const categoryInfo = {
-  vegetable: {
-    name: 'Vegetable Seeds',
-    icon: Sprout,
-    description: 'Grow fresh and healthy vegetables in your garden',
-    color: 'from-green-500 to-green-600'
+  'heart-health': {
+    name: 'Heart Health Seeds',
+    icon: Heart,
+    description: 'Seeds that support cardiovascular health and cholesterol control',
+    color: 'from-red-500 to-pink-600'
   },
-  fruit: {
-    name: 'Fruit Seeds',
-    icon: Leaf,
-    description: 'Plant delicious fruits for your orchard',
-    color: 'from-orange-500 to-red-500'
+  'brain-health': {
+    name: 'Brain Health Seeds',
+    icon: Brain,
+    description: 'Boost cognitive function and mental clarity',
+    color: 'from-purple-500 to-indigo-600'
   },
-  flower: {
-    name: 'Flower Seeds',
-    icon: Flower2,
-    description: 'Beautiful blooms for your garden',
-    color: 'from-pink-500 to-purple-500'
+  'diabetes-control': {
+    name: 'Diabetes Control Seeds',
+    icon: Activity,
+    description: 'Natural blood sugar management and metabolic support',
+    color: 'from-blue-500 to-cyan-600'
   },
-  herb: {
-    name: 'Herbal Seeds',
-    icon: Flower,
-    description: 'Medicinal and culinary herbs for wellness',
+  'bone-strength': {
+    name: 'Bone Strength Seeds',
+    icon: Bone,
+    description: 'Calcium-rich seeds for strong bones and joints',
+    color: 'from-amber-500 to-orange-600'
+  },
+  'immunity-boost': {
+    name: 'Immunity Boosting Seeds',
+    icon: Shield,
+    description: 'Strengthen your immune system naturally',
+    color: 'from-green-500 to-emerald-600'
+  },
+  'weight-management': {
+    name: 'Weight Management Seeds',
+    icon: Scale,
+    description: 'Support healthy weight loss and metabolism',
     color: 'from-teal-500 to-green-600'
   },
   all: {
-    name: 'All Products',
-    icon: Sprout,
-    description: 'Browse our complete collection of seeds',
+    name: 'All Health Seeds',
+    icon: Heart,
+    description: 'Browse our complete collection of health-focused seeds',
     color: 'from-green-600 to-green-700'
   }
 };
@@ -87,47 +99,67 @@ const Products = () => {
                 : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-green-100 dark:hover:bg-gray-700'
             }`}
           >
-            All Products
+            All Seeds
           </Link>
           <Link
-            to="/products/vegetable"
+            to="/products/heart-health"
             className={`px-4 py-2 rounded-lg font-semibold transition-all ${
-              currentCategory === 'vegetable'
-                ? 'bg-green-600 text-white'
-                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-green-100 dark:hover:bg-gray-700'
+              currentCategory === 'heart-health'
+                ? 'bg-red-600 text-white'
+                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-red-100 dark:hover:bg-gray-700'
             }`}
           >
-            Vegetables
+            ❤️ Heart Health
           </Link>
           <Link
-            to="/products/fruit"
+            to="/products/brain-health"
             className={`px-4 py-2 rounded-lg font-semibold transition-all ${
-              currentCategory === 'fruit'
+              currentCategory === 'brain-health'
+                ? 'bg-purple-600 text-white'
+                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-purple-100 dark:hover:bg-gray-700'
+            }`}
+          >
+            🧠 Brain Health
+          </Link>
+          <Link
+            to="/products/diabetes-control"
+            className={`px-4 py-2 rounded-lg font-semibold transition-all ${
+              currentCategory === 'diabetes-control'
+                ? 'bg-blue-600 text-white'
+                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-blue-100 dark:hover:bg-gray-700'
+            }`}
+          >
+            🩸 Diabetes Control
+          </Link>
+          <Link
+            to="/products/bone-strength"
+            className={`px-4 py-2 rounded-lg font-semibold transition-all ${
+              currentCategory === 'bone-strength'
                 ? 'bg-orange-600 text-white'
                 : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-orange-100 dark:hover:bg-gray-700'
             }`}
           >
-            Fruits
+            🦴 Bone Strength
           </Link>
           <Link
-            to="/products/flower"
+            to="/products/immunity-boost"
             className={`px-4 py-2 rounded-lg font-semibold transition-all ${
-              currentCategory === 'flower'
-                ? 'bg-pink-600 text-white'
-                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-pink-100 dark:hover:bg-gray-700'
+              currentCategory === 'immunity-boost'
+                ? 'bg-green-600 text-white'
+                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-green-100 dark:hover:bg-gray-700'
             }`}
           >
-            Flowers
+            💪 Immunity Boost
           </Link>
           <Link
-            to="/products/herb"
+            to="/products/weight-management"
             className={`px-4 py-2 rounded-lg font-semibold transition-all ${
-              currentCategory === 'herb'
+              currentCategory === 'weight-management'
                 ? 'bg-teal-600 text-white'
                 : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-teal-100 dark:hover:bg-gray-700'
             }`}
           >
-            Herbs
+            ⚖️ Weight Management
           </Link>
         </div>
 
