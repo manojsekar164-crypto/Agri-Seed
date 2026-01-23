@@ -1,4 +1,4 @@
-import { ShoppingCart, Check, Heart, Info } from 'lucide-react';
+import { ShoppingCart, Check, Heart, Info, Activity, Brain, Heart as HeartIcon, Bone, Shield, Scale, Sparkles, Gem } from 'lucide-react';
 import { Product } from '../data/products';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
@@ -7,6 +7,18 @@ import { useState } from 'react';
 interface ProductCardProps {
   product: Product;
 }
+
+// Health category mapping
+const healthCategoryIcons: Record<string, { icon: any; color: string; label: string }> = {
+  'heart-health': { icon: HeartIcon, color: 'text-red-500', label: 'Heart' },
+  'brain-health': { icon: Brain, color: 'text-purple-500', label: 'Brain' },
+  'diabetes-control': { icon: Activity, color: 'text-blue-500', label: 'Diabetes' },
+  'bone-strength': { icon: Bone, color: 'text-orange-500', label: 'Bones' },
+  'immunity-boost': { icon: Shield, color: 'text-green-500', label: 'Immunity' },
+  'weight-management': { icon: Scale, color: 'text-teal-500', label: 'Weight' },
+  'hair-health': { icon: Sparkles, color: 'text-pink-500', label: 'Hair' },
+  'skin-care': { icon: Gem, color: 'text-rose-500', label: 'Skin' }
+};
 
 const ProductCard = ({ product }: ProductCardProps) => {
   const { addToCart, cart } = useCart();
@@ -17,6 +29,25 @@ const ProductCard = ({ product }: ProductCardProps) => {
 
   const isInCart = cart.some(item => item.id === product.id);
   const isWishlisted = isInWishlist(product.id);
+
+  const handleAddToCart = () => {
+    addToCart(product);
+    setJustAdded(true);
+    setTimeout(() => setJustAdded(false), 2000);
+  };
+
+  const handleWishlistToggle = () => {
+    if (isWishlisted) {
+      removeFromWishlist(product.id);
+    } else {
+      addToWishlist(product);
+      setWishlistAdded(true);
+      setTimeout(() => setWishlistAdded(false), 2000);
+    }
+  };
+
+  const categoryInfo = healthCategoryIcons[product.category];
+  const CategoryIcon = categoryInfo?.icon;
 
   const handleAddToCart = () => {
     addToCart(product);
@@ -76,11 +107,12 @@ const ProductCard = ({ product }: ProductCardProps) => {
             />
           </button>
 
-          {/* Category Badge */}
+          {/* Category Badge with Icon */}
           <div className="absolute top-3 left-3">
-            <span className="bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
-              {product.category.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
-            </span>
+            <div className="flex items-center space-x-1 bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm text-gray-800 dark:text-white px-3 py-1.5 rounded-full shadow-lg border border-gray-200 dark:border-gray-700">
+              {CategoryIcon && <CategoryIcon className={`w-4 h-4 ${categoryInfo.color}`} />}
+              <span className="text-xs font-bold">{categoryInfo?.label}</span>
+            </div>
           </div>
         </div>
 
