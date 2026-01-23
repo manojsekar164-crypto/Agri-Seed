@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Heart, Brain, Activity, Bone, Shield, Scale, ChevronLeft, ChevronRight, Star, User } from 'lucide-react';
+import { Heart, Brain, Activity, Bone, Shield, Scale, Sparkles, ChevronLeft, ChevronRight, Star, User } from 'lucide-react';
 
 const carouselImages = [
   'https://images.pexels.com/photos/1595104/pexels-photo-1595104.jpeg?auto=compress&cs=tinysrgb&w=1200',
@@ -51,6 +51,13 @@ const categories = [
     path: '/products/weight-management',
     color: 'from-teal-500 to-green-600',
     image: 'https://images.pexels.com/photos/5503116/pexels-photo-5503116.jpeg?auto=compress&cs=tinysrgb&w=400'
+  },
+  {
+    name: 'Hair Health Seeds',
+    icon: Sparkles,
+    path: '/products/hair-health',
+    color: 'from-pink-500 to-rose-600',
+    image: 'https://images.pexels.com/photos/4033325/pexels-photo-4033325.jpeg?auto=compress&cs=tinysrgb&w=400'
   }
 ];
 

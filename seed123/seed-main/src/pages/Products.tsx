@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { products, getCategoryProducts } from '../data/products';
 import ProductCard from '../components/ProductCard';
-import { Search, Filter, Heart, Brain, Activity, Bone, Shield, Scale } from 'lucide-react';
+import { Search, Filter, Heart, Brain, Activity, Bone, Shield, Scale, Sparkles } from 'lucide-react';
 
 const categoryInfo = {
   'heart-health': {
@@ -40,6 +40,12 @@ const categoryInfo = {
     icon: Scale,
     description: 'Support healthy weight loss and metabolism',
     color: 'from-teal-500 to-green-600'
+  },
+  'hair-health': {
+    name: 'Hair Health Seeds',
+    icon: Sparkles,
+    description: 'Nourish your hair from within - reduce fall, boost growth',
+    color: 'from-pink-500 to-rose-600'
   },
   all: {
     name: 'All Health Seeds',
@@ -160,6 +166,16 @@ const Products = () => {
             }`}
           >
             ⚖️ Weight Management
+          </Link>
+          <Link
+            to="/products/hair-health"
+            className={`px-4 py-2 rounded-lg font-semibold transition-all ${
+              currentCategory === 'hair-health'
+                ? 'bg-pink-600 text-white'
+                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-pink-100 dark:hover:bg-gray-700'
+            }`}
+          >
+            ✨ Hair Health
           </Link>
         </div>
 

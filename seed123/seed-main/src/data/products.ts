@@ -1,10 +1,11 @@
 export interface Product {
   id: string;
   name: string;
-  category: 'heart-health' | 'brain-health' | 'diabetes-control' | 'bone-strength' | 'immunity-boost' | 'weight-management';
+  category: 'heart-health' | 'brain-health' | 'diabetes-control' | 'bone-strength' | 'immunity-boost' | 'weight-management' | 'hair-health';
   price: number;
   image: string;
   healthBenefits: string[];
+  hairBenefits?: string[];
   nutrients: string[];
   consumptionMethod: string[];
   dailyLimit: string;
@@ -179,6 +180,148 @@ export const products: Product[] = [
     dailyLimit: '2-3 tablespoons per day',
     precautions: 'Start with small amounts',
     description: 'Complete protein source for healthy weight management'
+  },
+
+  // Hair Health Seeds
+  {
+    id: 'hh1',
+    name: 'Flax Seeds (Alsi)',
+    category: 'hair-health',
+    price: 150,
+    image: 'https://images.pexels.com/photos/4033325/pexels-photo-4033325.jpeg?auto=compress&cs=tinysrgb&w=400',
+    healthBenefits: ['Hair Strength', 'Reduces Breakage', 'Scalp Health'],
+    hairBenefits: ['Hair Fall Control', 'Scalp Health'],
+    nutrients: ['Omega-3', 'Vitamin E', 'Lignans', 'Protein'],
+    consumptionMethod: ['Ground Powder', 'Soaked', 'With Smoothies'],
+    dailyLimit: '1 tablespoon per day',
+    precautions: 'Always consume ground flax seeds for better absorption',
+    description: 'Strengthens hair roots, reduces dryness and breakage'
+  },
+  {
+    id: 'hh2',
+    name: 'Chia Seeds',
+    category: 'hair-health',
+    price: 200,
+    image: 'https://images.pexels.com/photos/2377045/pexels-photo-2377045.jpeg?auto=compress&cs=tinysrgb&w=400',
+    healthBenefits: ['Hair Thickness', 'New Growth', 'Protein Rich'],
+    hairBenefits: ['Hair Density', 'Hair Fall Control'],
+    nutrients: ['Protein', 'Zinc', 'Omega-3', 'Iron'],
+    consumptionMethod: ['Soaked', 'Pudding', 'Smoothies', 'Yogurt'],
+    dailyLimit: '1-2 tablespoons per day',
+    precautions: 'Always soak before consuming',
+    description: 'Improves hair thickness and promotes new growth'
+  },
+  {
+    id: 'hh3',
+    name: 'Pumpkin Seeds',
+    category: 'hair-health',
+    price: 180,
+    image: 'https://images.pexels.com/photos/1435735/pexels-photo-1435735.jpeg?auto=compress&cs=tinysrgb&w=400',
+    healthBenefits: ['Reduces Hair Thinning', 'Scalp Health', 'Hair Growth'],
+    hairBenefits: ['Hair Fall Control', 'Scalp Health'],
+    nutrients: ['Zinc', 'Magnesium', 'Iron', 'Omega-6'],
+    consumptionMethod: ['Roasted', 'Raw', 'Powder', 'With Smoothies'],
+    dailyLimit: '1-2 tablespoons per day',
+    precautions: 'Avoid if allergic to seeds',
+    description: 'Reduces hair thinning and supports scalp health'
+  },
+  {
+    id: 'hh4',
+    name: 'Sesame Seeds (Til)',
+    category: 'hair-health',
+    price: 110,
+    image: 'https://images.pexels.com/photos/4033324/pexels-photo-4033324.jpeg?auto=compress&cs=tinysrgb&w=400',
+    healthBenefits: ['Prevents Hair Fall', 'Strengthens Hair', 'Scalp Nourishment'],
+    hairBenefits: ['Hair Fall Control', 'Hair Density'],
+    nutrients: ['Calcium', 'Magnesium', 'Zinc', 'Vitamin B6'],
+    consumptionMethod: ['Roasted', 'Tahini', 'Ladoo', 'Oil'],
+    dailyLimit: '1 tablespoon per day',
+    precautions: 'Avoid if allergic to sesame',
+    description: 'Prevents premature hair fall and strengthens strands'
+  },
+  {
+    id: 'hh5',
+    name: 'Sunflower Seeds',
+    category: 'hair-health',
+    price: 140,
+    image: 'https://images.pexels.com/photos/53588/sunflower-seeds-nuts-snack-healthy-53588.jpeg?auto=compress&cs=tinysrgb&w=400',
+    healthBenefits: ['Scalp Circulation', 'Hair Shine', 'Hair Growth'],
+    hairBenefits: ['Scalp Health', 'Hair Density'],
+    nutrients: ['Vitamin E', 'Selenium', 'Biotin'],
+    consumptionMethod: ['Roasted', 'Raw', 'Salad Topping'],
+    dailyLimit: '1/4 cup per day',
+    precautions: 'Choose unsalted varieties for better health',
+    description: 'Improves blood circulation to scalp and boosts shine'
+  },
+  {
+    id: 'hh6',
+    name: 'Fenugreek Seeds (Methi)',
+    category: 'hair-health',
+    price: 90,
+    image: 'https://images.pexels.com/photos/6489052/pexels-photo-6489052.jpeg?auto=compress&cs=tinysrgb&w=400',
+    healthBenefits: ['Reduces Hair Fall', 'Strengthens Follicles', 'Hair Growth'],
+    hairBenefits: ['Hair Fall Control', 'Hair Density'],
+    nutrients: ['Protein', 'Iron', 'Lecithin', 'Nicotinic Acid'],
+    consumptionMethod: ['Soaked Water', 'Powder', 'Paste', 'Sprouted'],
+    dailyLimit: '1 teaspoon soaked seeds per day',
+    precautions: 'Consult doctor if pregnant',
+    description: 'Reduces hair fall and strengthens follicles'
+  },
+  {
+    id: 'hh7',
+    name: 'Watermelon Seeds',
+    category: 'hair-health',
+    price: 120,
+    image: 'https://images.pexels.com/photos/5966630/pexels-photo-5966630.jpeg?auto=compress&cs=tinysrgb&w=400',
+    healthBenefits: ['Hair Growth', 'Scalp Nourishment', 'Protein Rich'],
+    hairBenefits: ['Hair Density', 'Scalp Health'],
+    nutrients: ['Zinc', 'Iron', 'Protein', 'Fatty Acids'],
+    consumptionMethod: ['Roasted', 'Raw', 'Powder'],
+    dailyLimit: '1-2 tablespoons per day',
+    precautions: 'Consume in moderation',
+    description: 'Supports hair growth and scalp nourishment'
+  },
+  {
+    id: 'hh8',
+    name: 'Almond Seeds',
+    category: 'hair-health',
+    price: 250,
+    image: 'https://images.pexels.com/photos/1295572/pexels-photo-1295572.jpeg?auto=compress&cs=tinysrgb&w=400',
+    healthBenefits: ['Hair Strength', 'Reduces Breakage', 'Hair Growth'],
+    hairBenefits: ['Hair Fall Control', 'Hair Density'],
+    nutrients: ['Vitamin E', 'Magnesium', 'Healthy Fats', 'Biotin'],
+    consumptionMethod: ['Raw', 'Soaked', 'Roasted', 'Almond Milk', 'Oil'],
+    dailyLimit: '8-10 almonds per day',
+    precautions: 'Avoid excess intake if you have kidney stones',
+    description: 'Improves hair strength and reduces breakage'
+  },
+  {
+    id: 'hh9',
+    name: 'Coriander Seeds (Dhaniya)',
+    category: 'hair-health',
+    price: 60,
+    image: 'https://images.pexels.com/photos/2749481/pexels-photo-2749481.jpeg?auto=compress&cs=tinysrgb&w=400',
+    healthBenefits: ['Scalp Circulation', 'Hair Growth', 'Antioxidant Rich'],
+    hairBenefits: ['Scalp Health', 'Hair Density'],
+    nutrients: ['Iron', 'Vitamin C', 'Antioxidants'],
+    consumptionMethod: ['Powder', 'Soaked Water', 'Tea'],
+    dailyLimit: '1 teaspoon per day',
+    precautions: 'Safe for most people',
+    description: 'Improves blood flow to scalp and supports growth'
+  },
+  {
+    id: 'hh10',
+    name: 'Nigella Seeds (Kalonji)',
+    category: 'hair-health',
+    price: 130,
+    image: 'https://images.pexels.com/photos/4198933/pexels-photo-4198933.jpeg?auto=compress&cs=tinysrgb&w=400',
+    healthBenefits: ['Reduces Hair Fall', 'Hair Density', 'Scalp Health'],
+    hairBenefits: ['Hair Fall Control', 'Hair Density'],
+    nutrients: ['Thymoquinone', 'Omega-3', 'Omega-6', 'Iron'],
+    consumptionMethod: ['With Honey', 'Oil', 'Tea', 'Roasted'],
+    dailyLimit: '1/2 teaspoon per day',
+    precautions: 'Pregnant women should consult doctor',
+    description: 'Reduces hair fall and improves hair density'
   }
 ];
 

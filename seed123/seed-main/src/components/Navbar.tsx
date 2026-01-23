@@ -49,6 +49,14 @@ const Navbar = () => {
               Products
             </Link>
             <Link
+              to="/hair-care"
+              className={`hover:text-yellow-300 transition-colors ${
+                isActive('/hair-care') ? 'text-yellow-300 font-semibold' : ''
+              }`}
+            >
+              ✨ Hair Care
+            </Link>
+            <Link
               to="/wishlist"
               className={`relative hover:text-yellow-300 transition-colors ${
                 isActive('/wishlist') ? 'text-yellow-300 font-semibold' : ''
