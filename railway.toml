@@ -1,0 +1,8 @@
+[build]
+builder = "NIXPACKS"
+buildCommand = "cd seed123/server && npm install"
+
+[deploy]
+startCommand = "cd seed123/server && node index.js"
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 10

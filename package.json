@@ -1,0 +1,13 @@
+{
+  "name": "agriseed-monorepo",
+  "version": "1.0.0",
+  "description": "AgriSeed Shop - Full Stack Application",
+  "scripts": {
+    "start": "cd seed123/server && node index.js",
+    "install-backend": "cd seed123/server && npm install",
+    "install-frontend": "cd seed123/seed-main && npm install"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

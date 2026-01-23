@@ -1,0 +1,8 @@
+[phases.setup]
+nixPkgs = ["nodejs"]
+
+[phases.install]
+cmds = ["cd seed123/server && npm install"]
+
+[start]
+cmd = "cd seed123/server && node index.js"
