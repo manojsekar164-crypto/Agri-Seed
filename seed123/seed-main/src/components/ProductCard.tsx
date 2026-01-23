@@ -35,84 +35,115 @@ const ProductCard = ({ product }: ProductCardProps) => {
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden group relative">
-      <div className="relative overflow-hidden h-48">
-        <img
-          src={product.image}
-          alt={product.name}
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-        
-        {/* Wishlist button */}
-        <button
-          onClick={handleWishlistToggle}
-          className={`absolute top-3 right-3 p-2 rounded-full shadow-lg transition-all transform hover:scale-110 ${
-            isWishlisted || wishlistAdded
-              ? 'bg-red-500 text-white'
-              : 'bg-white/90 hover:bg-white text-gray-600 hover:text-red-500'
-          }`}
-          title={isWishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
+    <>
+      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group border border-gray-100 dark:border-gray-700">
+        {/* Compact Image Section */}
+        <div 
+          className="relative overflow-hidden h-40 cursor-pointer bg-gradient-to-br from-green-50 to-emerald-50 dark:from-gray-700 dark:to-gray-600"
+          onClick={() => setShowInfo(true)}
         >
-          <Heart 
-            className={`w-5 h-5 ${isWishlisted || wishlistAdded ? 'fill-current' : ''}`} 
+          <img
+            src={product.image}
+            alt={product.name}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />
-        </button>
+          
+          {/* Gradient Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+          
+          {/* Info Icon - Floating */}
+          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <div className="bg-white/95 dark:bg-gray-800/95 rounded-full p-3 shadow-xl transform group-hover:scale-110 transition-transform">
+              <Info className="w-5 h-5 text-green-600 dark:text-green-400" />
+            </div>
+          </div>
+          
+          {/* Wishlist button - Top Right */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              handleWishlistToggle();
+            }}
+            className={`absolute top-3 right-3 p-2 rounded-full shadow-lg transition-all transform hover:scale-110 backdrop-blur-sm ${
+              isWishlisted || wishlistAdded
+                ? 'bg-red-500 text-white'
+                : 'bg-white/90 hover:bg-white text-gray-600 hover:text-red-500'
+            }`}
+            title={isWishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
+          >
+            <Heart 
+              className={`w-4 h-4 ${isWishlisted || wishlistAdded ? 'fill-current' : ''}`} 
+            />
+          </button>
 
-        {/* Info button */}
-        <button
-          onClick={() => setShowInfo(!showInfo)}
-          className="absolute top-3 left-3 p-2 rounded-full bg-blue-500 text-white shadow-lg transition-all transform hover:scale-110 hover:bg-blue-600"
-          title="View nutritional info"
-        >
-          <Info className="w-5 h-5" />
-        </button>
-      </div>
-
-      <div className="p-4">
-        <h3 className="text-lg font-bold text-gray-800 dark:text-white mb-2 group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors">
-          {product.name}
-        </h3>
-
-        <p className="text-sm text-gray-600 dark:text-gray-300 mb-2 line-clamp-2">
-          {product.description}
-        </p>
-
-        <div className="flex flex-wrap gap-1 mb-3">
-          {product.healthBenefits.slice(0, 2).map((benefit, index) => (
-            <span key={index} className="text-xs text-green-700 dark:text-green-400 bg-green-100 dark:bg-green-900/30 px-2 py-1 rounded-full">
-              {benefit}
+          {/* Category Badge */}
+          <div className="absolute top-3 left-3">
+            <span className="bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+              {product.category.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ')}
             </span>
-          ))}
+          </div>
         </div>
 
-        <div className="flex items-center justify-between">
-          <span className="text-2xl font-bold text-green-700 dark:text-green-400">
-            ₹{product.price}
-          </span>
-
-          <button
-            onClick={handleAddToCart}
-            className={`flex items-center space-x-2 px-4 py-2 rounded-lg font-semibold transition-all ${
-              justAdded
-                ? 'bg-green-600 text-white'
-                : isInCart
-                ? 'bg-yellow-500 hover:bg-yellow-600 text-white'
-                : 'bg-green-600 hover:bg-green-700 text-white'
-            }`}
+        {/* Content Section - More Spacious */}
+        <div className="p-5">
+          {/* Product Name */}
+          <h3 
+            className="text-lg font-bold text-gray-900 dark:text-white mb-2 line-clamp-1 cursor-pointer hover:text-green-600 dark:hover:text-green-400 transition-colors"
+            onClick={() => setShowInfo(true)}
           >
-            {justAdded ? (
-              <>
-                <Check className="w-4 h-4" />
-                <span className="text-sm">Added!</span>
-              </>
-            ) : (
-              <>
-                <ShoppingCart className="w-4 h-4" />
-                <span className="text-sm">Add</span>
-              </>
-            )}
-          </button>
+            {product.name}
+          </h3>
+
+          {/* Description */}
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-3 line-clamp-2 leading-relaxed">
+            {product.description}
+          </p>
+
+          {/* Health Benefits Tags */}
+          <div className="flex flex-wrap gap-2 mb-4">
+            {product.healthBenefits.slice(0, 2).map((benefit, index) => (
+              <span 
+                key={index} 
+                className="inline-flex items-center text-xs font-semibold text-green-700 dark:text-green-400 bg-green-50 dark:bg-green-900/30 px-3 py-1.5 rounded-full border border-green-200 dark:border-green-800"
+              >
+                <span className="mr-1">✓</span>
+                {benefit}
+              </span>
+            ))}
+          </div>
+
+          {/* Price and Action Row */}
+          <div className="flex items-center justify-between pt-3 border-t border-gray-100 dark:border-gray-700">
+            <div>
+              <span className="text-2xl font-bold text-green-600 dark:text-green-400">
+                ₹{product.price}
+              </span>
+              <span className="text-xs text-gray-500 dark:text-gray-400 ml-1">/ pack</span>
+            </div>
+
+            <button
+              onClick={handleAddToCart}
+              className={`flex items-center space-x-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all transform hover:scale-105 shadow-md hover:shadow-lg ${
+                justAdded
+                  ? 'bg-green-600 text-white'
+                  : isInCart
+                  ? 'bg-yellow-500 hover:bg-yellow-600 text-white'
+                  : 'bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white'
+              }`}
+            >
+              {justAdded ? (
+                <>
+                  <Check className="w-4 h-4" />
+                  <span>Added!</span>
+                </>
+              ) : (
+                <>
+                  <ShoppingCart className="w-4 h-4" />
+                  <span>Add</span>
+                </>
+              )}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -216,7 +247,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
           </div>
         </>
       )}
-    </div>
+    </>
   );
 };
 
