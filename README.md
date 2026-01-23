@@ -233,7 +233,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 ## 🙏 Acknowledgments
 
 - Thanks to all contributors who help improve this project
-- Inspired by the need to support Indian farmers and gardeners
+- Inspired by the need to support individuals on taking correct edible seeds.
 - Built with modern web technologies for optimal performance
 
 ## 📞 Support
@@ -245,6 +245,5 @@ If you have any questions or need help, please:
 ---
 
 <div align="center">
-  <p>Made with ❤️ for Indian Farmers and Gardeners</p>
   <p>⭐ Star this repository if you find it helpful!</p>
 </div>
