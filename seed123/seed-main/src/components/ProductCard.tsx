@@ -30,22 +30,6 @@ const ProductCard = ({ product }: ProductCardProps) => {
   const isInCart = cart.some(item => item.id === product.id);
   const isWishlisted = isInWishlist(product.id);
 
-  const handleAddToCart = () => {
-    addToCart(product);
-    setJustAdded(true);
-    setTimeout(() => setJustAdded(false), 2000);
-  };
-
-  const handleWishlistToggle = () => {
-    if (isWishlisted) {
-      removeFromWishlist(product.id);
-    } else {
-      addToWishlist(product);
-      setWishlistAdded(true);
-      setTimeout(() => setWishlistAdded(false), 2000);
-    }
-  };
-
   const categoryInfo = healthCategoryIcons[product.category];
   const CategoryIcon = categoryInfo?.icon;
 
@@ -67,10 +51,10 @@ const ProductCard = ({ product }: ProductCardProps) => {
 
   return (
     <>
-      <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group border border-gray-100 dark:border-gray-700">
-        {/* Compact Image Section */}
+      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group border border-gray-100 dark:border-gray-700">
+        {/* Compact Image Section - Increased to h-32 for better visibility */}
         <div 
-          className="relative overflow-hidden h-40 cursor-pointer bg-gradient-to-br from-green-50 to-emerald-50 dark:from-gray-700 dark:to-gray-600"
+          className="relative overflow-hidden h-32 cursor-pointer bg-gradient-to-br from-green-50 to-emerald-50 dark:from-gray-700 dark:to-gray-600"
           onClick={() => setShowInfo(true)}
         >
           <img
@@ -84,8 +68,8 @@ const ProductCard = ({ product }: ProductCardProps) => {
           
           {/* Info Icon - Floating */}
           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <div className="bg-white/95 dark:bg-gray-800/95 rounded-full p-3 shadow-xl transform group-hover:scale-110 transition-transform">
-              <Info className="w-5 h-5 text-green-600 dark:text-green-400" />
+            <div className="bg-white/95 dark:bg-gray-800/95 rounded-full p-2 shadow-xl transform group-hover:scale-110 transition-transform">
+              <Info className="w-4 h-4 text-green-600 dark:text-green-400" />
             </div>
           </div>
           
@@ -116,33 +100,15 @@ const ProductCard = ({ product }: ProductCardProps) => {
           </div>
         </div>
 
-        {/* Content Section - More Spacious */}
-        <div className="p-5">
-          {/* Product Name */}
+        {/* Content Section - Increased padding to p-4 */}
+        <div className="p-4">
+          {/* Product Name - Increased to text-lg */}
           <h3 
-            className="text-lg font-bold text-gray-900 dark:text-white mb-2 line-clamp-1 cursor-pointer hover:text-green-600 dark:hover:text-green-400 transition-colors"
+            className="text-lg font-bold text-gray-900 dark:text-white mb-4 line-clamp-1 cursor-pointer hover:text-green-600 dark:hover:text-green-400 transition-colors"
             onClick={() => setShowInfo(true)}
           >
             {product.name}
           </h3>
-
-          {/* Description */}
-          <p className="text-sm text-gray-600 dark:text-gray-400 mb-3 line-clamp-2 leading-relaxed">
-            {product.description}
-          </p>
-
-          {/* Health Benefits Tags */}
-          <div className="flex flex-wrap gap-2 mb-4">
-            {product.healthBenefits.slice(0, 2).map((benefit, index) => (
-              <span 
-                key={index} 
-                className="inline-flex items-center text-xs font-semibold text-green-700 dark:text-green-400 bg-green-50 dark:bg-green-900/30 px-3 py-1.5 rounded-full border border-green-200 dark:border-green-800"
-              >
-                <span className="mr-1">✓</span>
-                {benefit}
-              </span>
-            ))}
-          </div>
 
           {/* Price and Action Row */}
           <div className="flex items-center justify-between pt-3 border-t border-gray-100 dark:border-gray-700">
@@ -150,12 +116,12 @@ const ProductCard = ({ product }: ProductCardProps) => {
               <span className="text-2xl font-bold text-green-600 dark:text-green-400">
                 ₹{product.price}
               </span>
-              <span className="text-xs text-gray-500 dark:text-gray-400 ml-1">/ pack</span>
+              <span className="text-sm text-gray-500 dark:text-gray-400 ml-1">/ pack</span>
             </div>
 
             <button
               onClick={handleAddToCart}
-              className={`flex items-center space-x-2 px-5 py-2.5 rounded-xl font-bold text-sm transition-all transform hover:scale-105 shadow-md hover:shadow-lg ${
+              className={`flex items-center space-x-2 px-4 py-2.5 rounded-xl font-bold text-sm transition-all transform hover:scale-105 shadow-md hover:shadow-lg ${
                 justAdded
                   ? 'bg-green-600 text-white'
                   : isInCart
@@ -165,12 +131,12 @@ const ProductCard = ({ product }: ProductCardProps) => {
             >
               {justAdded ? (
                 <>
-                  <Check className="w-4 h-4" />
+                  <Check className="w-5 h-5" />
                   <span>Added!</span>
                 </>
               ) : (
                 <>
-                  <ShoppingCart className="w-4 h-4" />
+                  <ShoppingCart className="w-5 h-5" />
                   <span>Add</span>
                 </>
               )}

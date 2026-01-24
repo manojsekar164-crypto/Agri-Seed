@@ -12,6 +12,7 @@ const Navbar = () => {
   const location = useLocation();
   const [isDark, setIsDark] = useState(false);
   const [showSpecialCare, setShowSpecialCare] = useState(false);
+  const [closeTimeout, setCloseTimeout] = useState<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     if (isDark) {
@@ -20,6 +21,21 @@ const Navbar = () => {
       document.documentElement.classList.remove('dark');
     }
   }, [isDark]);
+
+  const handleMouseEnter = () => {
+    if (closeTimeout) {
+      clearTimeout(closeTimeout);
+      setCloseTimeout(null);
+    }
+    setShowSpecialCare(true);
+  };
+
+  const handleMouseLeave = () => {
+    const timeout = setTimeout(() => {
+      setShowSpecialCare(false);
+    }, 300); // 300ms delay before closing
+    setCloseTimeout(timeout);
+  };
 
   const isActive = (path: string) => location.pathname === path;
   const isSpecialCareActive = isActive('/hair-care') || isActive('/skin-care');
@@ -54,8 +70,8 @@ const Navbar = () => {
             {/* Special Care Dropdown */}
             <div 
               className="relative"
-              onMouseEnter={() => setShowSpecialCare(true)}
-              onMouseLeave={() => setShowSpecialCare(false)}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
             >
               <button
                 className={`flex items-center space-x-1 hover:text-yellow-300 transition-colors ${
@@ -67,10 +83,11 @@ const Navbar = () => {
               </button>
               
               {showSpecialCare && (
-                <div className="absolute top-full left-0 mt-2 w-48 bg-white dark:bg-gray-800 rounded-lg shadow-xl py-2 border border-gray-200 dark:border-gray-700">
+                <div className="absolute top-full left-0 mt-3 w-52 bg-white dark:bg-gray-800 rounded-lg shadow-xl py-2 border border-gray-200 dark:border-gray-700 animate-fade-in">
                   <Link
                     to="/hair-care"
                     className="block px-4 py-3 text-gray-800 dark:text-gray-200 hover:bg-green-50 dark:hover:bg-green-900/20 transition-colors"
+                    onClick={() => setShowSpecialCare(false)}
                   >
                     <div className="flex items-center space-x-2">
                       <span className="text-xl">✨</span>
@@ -83,6 +100,7 @@ const Navbar = () => {
                   <Link
                     to="/skin-care"
                     className="block px-4 py-3 text-gray-800 dark:text-gray-200 hover:bg-green-50 dark:hover:bg-green-900/20 transition-colors"
+                    onClick={() => setShowSpecialCare(false)}
                   >
                     <div className="flex items-center space-x-2">
                       <span className="text-xl">💎</span>

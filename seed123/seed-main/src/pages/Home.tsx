@@ -2,11 +2,31 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Heart, Brain, Activity, Bone, Shield, Scale, Sparkles, Gem, ChevronLeft, ChevronRight, Star, User } from 'lucide-react';
 
-const carouselImages = [
-  'https://images.pexels.com/photos/1595104/pexels-photo-1595104.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'https://images.pexels.com/photos/974314/pexels-photo-974314.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'https://images.pexels.com/photos/2132250/pexels-photo-2132250.jpeg?auto=compress&cs=tinysrgb&w=1200',
-  'https://images.pexels.com/photos/1459334/pexels-photo-1459334.jpeg?auto=compress&cs=tinysrgb&w=1200'
+const carouselSlides = [
+  {
+    image: 'https://images.unsplash.com/photo-1517666005606-69dea9b54865?w=1200&q=80',
+    title: '"Small seeds build strong bodies — eat seeds, grow health."',
+    subtitle: 'Discover the power of natural seeds for your wellness journey',
+    isQuote: true
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=1200&q=80',
+    title: 'Natural Seeds for Better Health 🌱',
+    subtitle: 'Discover seeds that support heart health, immunity, digestion, and overall wellness',
+    isQuote: false
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1608797178974-15b35a64ede9?w=1200&q=80',
+    title: 'Premium Quality Seeds',
+    subtitle: '100% organic and tested for purity - your health is our priority',
+    isQuote: false
+  },
+  {
+    image: 'https://images.unsplash.com/photo-1606787366850-de6330128bfc?w=1200&q=80',
+    title: 'Transform Your Health Naturally',
+    subtitle: 'From heart care to immunity boost - find the perfect seeds for your goals',
+    isQuote: false
+  }
 ];
 
 const categories = [
@@ -51,20 +71,6 @@ const categories = [
     path: '/products/weight-management',
     color: 'from-teal-500 to-green-600',
     image: 'https://images.pexels.com/photos/5503116/pexels-photo-5503116.jpeg?auto=compress&cs=tinysrgb&w=400'
-  },
-  {
-    name: 'Hair Health Seeds',
-    icon: Sparkles,
-    path: '/products/hair-health',
-    color: 'from-pink-500 to-rose-600',
-    image: 'https://images.pexels.com/photos/4033325/pexels-photo-4033325.jpeg?auto=compress&cs=tinysrgb&w=400'
-  },
-  {
-    name: 'Skin Care Seeds',
-    icon: Gem,
-    path: '/products/skin-care',
-    color: 'from-rose-500 to-pink-600',
-    image: 'https://images.pexels.com/photos/1120575/pexels-photo-1120575.jpeg?auto=compress&cs=tinysrgb&w=400'
   }
 ];
 
@@ -94,23 +100,23 @@ const Home = () => {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % carouselImages.length);
-    }, 4000);
+      setCurrentSlide((prev) => (prev + 1) % carouselSlides.length);
+    }, 5000);
     return () => clearInterval(timer);
   }, []);
 
   const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % carouselImages.length);
+    setCurrentSlide((prev) => (prev + 1) % carouselSlides.length);
   };
 
   const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + carouselImages.length) % carouselImages.length);
+    setCurrentSlide((prev) => (prev - 1 + carouselSlides.length) % carouselSlides.length);
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-green-50 to-yellow-50 dark:from-gray-900 dark:to-gray-800">
       <div className="relative h-96 md:h-[500px] overflow-hidden">
-        {carouselImages.map((image, index) => (
+        {carouselSlides.map((slide, index) => (
           <div
             key={index}
             className={`absolute inset-0 transition-opacity duration-1000 ${
@@ -118,15 +124,15 @@ const Home = () => {
             }`}
           >
             <img
-              src={image}
+              src={slide.image}
               alt={`Slide ${index + 1}`}
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30" />
           </div>
         ))}
 
-        <div className="absolute inset-0 flex items-center justify-between px-4">
+        <div className="absolute inset-0 flex items-center justify-between px-4 z-10">
           <button
             onClick={prevSlide}
             className="bg-white/30 hover:bg-white/50 backdrop-blur-sm p-3 rounded-full transition-all"
@@ -141,15 +147,29 @@ const Home = () => {
           </button>
         </div>
 
-        <div className="absolute inset-0 flex items-center">
+        <div className="absolute inset-0 flex items-center z-10">
           <div className="container mx-auto px-4">
-            <div className="max-w-2xl text-white">
-              <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in">
-                Natural Seeds for Better Health 🌱
-              </h1>
-              <p className="text-lg md:text-xl mb-8 text-gray-200">
-                Discover seeds that support heart health, immunity, digestion, and overall wellness
-              </p>
+            <div className="max-w-3xl text-white">
+              {carouselSlides[currentSlide].isQuote ? (
+                <>
+                  <div className="text-6xl md:text-8xl mb-6 opacity-50">"</div>
+                  <h1 className="text-3xl md:text-5xl font-bold mb-6 leading-tight italic">
+                    {carouselSlides[currentSlide].title.replace(/"/g, '')}
+                  </h1>
+                  <p className="text-lg md:text-2xl mb-8 text-gray-200 font-light">
+                    {carouselSlides[currentSlide].subtitle}
+                  </p>
+                </>
+              ) : (
+                <>
+                  <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in">
+                    {carouselSlides[currentSlide].title}
+                  </h1>
+                  <p className="text-lg md:text-xl mb-8 text-gray-200">
+                    {carouselSlides[currentSlide].subtitle}
+                  </p>
+                </>
+              )}
               <Link
                 to="/products"
                 className="inline-block bg-green-600 hover:bg-green-700 text-white px-8 py-3 rounded-lg font-semibold transition-all transform hover:scale-105 shadow-lg"
@@ -160,8 +180,8 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
-          {carouselImages.map((_, index) => (
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-10">
+          {carouselSlides.map((_, index) => (
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
@@ -191,7 +211,7 @@ const Home = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
           {categories.map((category) => {
             const Icon = category.icon;
             return (

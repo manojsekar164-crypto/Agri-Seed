@@ -173,26 +173,6 @@ const Products = () => {
           >
             ⚖️ Weight Management
           </Link>
-          <Link
-            to="/products/hair-health"
-            className={`px-4 py-2 rounded-lg font-semibold transition-all ${
-              currentCategory === 'hair-health'
-                ? 'bg-pink-600 text-white'
-                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-pink-100 dark:hover:bg-gray-700'
-            }`}
-          >
-            ✨ Hair Health
-          </Link>
-          <Link
-            to="/products/skin-care"
-            className={`px-4 py-2 rounded-lg font-semibold transition-all ${
-              currentCategory === 'skin-care'
-                ? 'bg-rose-600 text-white'
-                : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-rose-100 dark:hover:bg-gray-700'
-            }`}
-          >
-            💎 Skin Care
-          </Link>
         </div>
 
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 mb-8">
