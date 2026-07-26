@@ -51,21 +51,6 @@ pipeline {
             }
         }
 
-        stage('SonarQube Analysis') {
-            steps {
-                script {
-                    def scannerHome = tool 'SonarScanner'
-
-                    withSonarQubeEnv('SonarQube') {
-                        bat """
-                        "${scannerHome}\\bin\\sonar-scanner.bat" ^
-                        -Dproject.settings=seed123/sonar-project.properties
-                        """
-                    }
-                }
-            }
-        }
-
         stage('Build Docker Images') {
             steps {
                 bat 'docker compose -f seed123/docker-compose.prod.yml build'
