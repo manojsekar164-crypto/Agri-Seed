@@ -211,14 +211,14 @@ const Home = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-4 mb-16">
           {categories.map((category) => {
             const Icon = category.icon;
             return (
               <Link
                 key={category.name}
                 to={category.path}
-                className="group relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+                className="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
               >
                 <div className="aspect-square relative">
                   <img
@@ -228,10 +228,10 @@ const Home = () => {
                   />
                   <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-70 group-hover:opacity-80 transition-opacity`} />
 
-                  <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-6">
-                    <Icon className="w-16 h-16 mb-4 group-hover:scale-110 transition-transform" />
-                    <h3 className="text-2xl font-bold text-center">{category.name}</h3>
-                    <p className="mt-2 text-sm opacity-90">Explore Collection</p>
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-2">
+                    <Icon className="w-8 h-8 mb-2 group-hover:scale-110 transition-transform" />
+                    <h3 className="text-sm font-bold text-center leading-tight">{category.name}</h3>
+                    <p className="mt-1 text-xs opacity-90">Explore</p>
                   </div>
                 </div>
               </Link>

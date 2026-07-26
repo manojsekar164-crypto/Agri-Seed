@@ -1,0 +1,63 @@
+services:
+
+  mongodb:
+    image: mongo:7
+    container_name: seedify-mongodb
+
+    restart: unless-stopped
+
+    ports:
+      - "27017:27017"
+
+    volumes:
+      - mongodb-data:/data/db
+
+    networks:
+      - seedify-network
+
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.prod
+
+    container_name: seedify-backend
+
+    restart: unless-stopped
+
+    ports:
+      - "5001:5000"
+
+    environment:
+      PORT: 5000
+      DB_NAME: seedshop
+      MONGODB_URI: mongodb://mongodb:27017
+
+    depends_on:
+      - mongodb
+
+    networks:
+      - seedify-network
+
+  frontend:
+    build:
+      context: ./seed-main
+      dockerfile: Dockerfile.prod
+
+    container_name: seedify-frontend
+
+    restart: unless-stopped
+
+    ports:
+      - "3000:80"
+
+    depends_on:
+      - backend
+
+    networks:
+      - seedify-network
+
+volumes:
+  mongodb-data:
+
+networks:
+  seedify-network:
