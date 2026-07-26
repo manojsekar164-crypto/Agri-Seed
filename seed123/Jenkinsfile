@@ -1,0 +1,52 @@
+pipeline {
+    agent any
+
+    tools {
+        nodejs 'NodeJS-22'
+    }
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                echo 'Checking out source code...'
+                checkout scm
+            }
+        }
+
+        stage('Verify Environment') {
+            steps {
+                bat 'node -v'
+                bat 'npm -v'
+                bat 'docker --version'
+                bat 'docker compose version'
+            }
+        }
+
+        stage('Install Frontend Dependencies') {
+            steps {
+                dir('seed-main') {
+                    bat 'npm install'
+                }
+            }
+        }
+
+        stage('Install Backend Dependencies') {
+            steps {
+                dir('server') {
+                    bat 'npm install'
+                }
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+
+        failure {
+            echo 'Pipeline failed!'
+        }
+    }
+}
