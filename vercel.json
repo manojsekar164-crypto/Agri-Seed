@@ -1,0 +1,11 @@
+{
+  "buildCommand": "cd seed123/seed-main && npm install && npm run build",
+  "outputDirectory": "seed123/seed-main/dist",
+  "framework": "vite",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

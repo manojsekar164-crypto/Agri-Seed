@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Mail, Lock, User, Phone, MapPin, Sprout } from 'lucide-react';
+import { API_ENDPOINTS } from '../config/api';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -52,7 +53,7 @@ const Signup = () => {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/api/auth/signup', {
+      const response = await fetch(API_ENDPOINTS.auth.signup, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
