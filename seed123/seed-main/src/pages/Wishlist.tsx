@@ -100,9 +100,9 @@ const Wishlist = () => {
               key={product.id}
               className="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden group"
             >
-              <div className="relative overflow-hidden p-4 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-gray-700 dark:to-gray-800 border-b border-gray-100 dark:border-gray-700 text-center">
-                <div className="w-12 h-12 mx-auto rounded-2xl bg-white dark:bg-gray-600 flex items-center justify-center shadow-sm mb-1 group-hover:scale-110 transition-transform">
-                  <Sprout className="w-6 h-6 text-green-600 dark:text-green-400" />
+              <div className="relative overflow-hidden p-5 bg-gradient-to-br from-emerald-500/15 via-green-500/10 to-teal-500/5 dark:from-emerald-950/40 dark:via-gray-800 dark:to-gray-800 border-b border-gray-100 dark:border-gray-700 text-center border-t-4 border-emerald-500">
+                <div className="w-14 h-14 mx-auto rounded-2xl bg-gradient-to-tr from-emerald-500 to-green-600 text-white flex items-center justify-center shadow-md mb-1 group-hover:scale-110 transition-transform duration-300">
+                  <Sprout className="w-7 h-7" />
                 </div>
                 
                 {/* Remove from wishlist button */}

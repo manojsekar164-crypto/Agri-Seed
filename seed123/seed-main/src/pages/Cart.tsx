@@ -41,9 +41,9 @@ const Cart = () => {
                 className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow"
               >
                 <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
-                  <div className="w-20 h-20 bg-green-50 dark:bg-gray-700 rounded-xl flex flex-col items-center justify-center flex-shrink-0 border border-green-200 dark:border-gray-600 p-2 text-center">
-                    <Sprout className="w-7 h-7 text-green-600 dark:text-green-400 mb-1" />
-                    <span className="text-[10px] font-semibold text-gray-700 dark:text-gray-300 line-clamp-1 leading-tight">{item.name}</span>
+                  <div className="w-20 h-20 bg-gradient-to-br from-emerald-500 via-green-600 to-teal-700 text-white rounded-2xl flex flex-col items-center justify-center flex-shrink-0 shadow-md p-2 text-center">
+                    <Sprout className="w-8 h-8 mb-1 filter drop-shadow" />
+                    <span className="text-[9px] font-extrabold text-white line-clamp-1 leading-tight tracking-wide uppercase">{item.name.split(' ')[0]}</span>
                   </div>
 
                   <div className="flex-1">

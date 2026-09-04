@@ -201,8 +201,8 @@ const Checkout = () => {
                   className="flex justify-between items-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg"
                 >
                   <div className="flex items-center space-x-4">
-                    <div className="w-14 h-14 bg-green-50 dark:bg-gray-600 rounded-lg flex flex-col items-center justify-center flex-shrink-0 border border-green-200 dark:border-gray-500 p-1 text-center">
-                      <Sprout className="w-6 h-6 text-green-600 dark:text-green-400" />
+                    <div className="w-14 h-14 bg-gradient-to-tr from-emerald-500 to-green-600 text-white rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm">
+                      <Sprout className="w-7 h-7" />
                     </div>
                     <div>
                       <h3 className="font-semibold text-gray-800 dark:text-white">{item.name}</h3>
