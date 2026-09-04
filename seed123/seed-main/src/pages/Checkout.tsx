@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useCart } from '../context/CartContext';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
-import { CheckCircle, Package, Truck, CreditCard } from 'lucide-react';
+import { CheckCircle, Package, Truck, CreditCard, Sprout } from 'lucide-react';
 import { RAZORPAY_CONFIG, loadRazorpayScript, RazorpayOptions } from '../config/razorpay';
 import { API_ENDPOINTS } from '../config/api';
 
@@ -201,11 +201,9 @@ const Checkout = () => {
                   className="flex justify-between items-center p-4 bg-gray-50 dark:bg-gray-700 rounded-lg"
                 >
                   <div className="flex items-center space-x-4">
-                    <img
-                      src={item.image}
-                      alt={item.name}
-                      className="w-16 h-16 object-cover rounded-lg"
-                    />
+                    <div className="w-14 h-14 bg-green-50 dark:bg-gray-600 rounded-lg flex flex-col items-center justify-center flex-shrink-0 border border-green-200 dark:border-gray-500 p-1 text-center">
+                      <Sprout className="w-6 h-6 text-green-600 dark:text-green-400" />
+                    </div>
                     <div>
                       <h3 className="font-semibold text-gray-800 dark:text-white">{item.name}</h3>
                       <p className="text-sm text-gray-600 dark:text-gray-400">

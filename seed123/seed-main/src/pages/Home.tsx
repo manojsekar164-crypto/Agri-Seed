@@ -4,25 +4,25 @@ import { Heart, Brain, Activity, Bone, Shield, Scale, Sparkles, Gem, ChevronLeft
 
 const carouselSlides = [
   {
-    image: 'https://images.unsplash.com/photo-1517666005606-69dea9b54865?w=1200&q=80',
+    bgGradient: 'from-emerald-900 via-green-900 to-teal-950',
     title: '"Small seeds build strong bodies — eat seeds, grow health."',
     subtitle: 'Discover the power of natural seeds for your wellness journey',
     isQuote: true
   },
   {
-    image: 'https://images.unsplash.com/photo-1505576399279-565b52d4ac71?w=1200&q=80',
+    bgGradient: 'from-green-900 via-emerald-800 to-teal-900',
     title: 'Natural Seeds for Better Health 🌱',
     subtitle: 'Discover seeds that support heart health, immunity, digestion, and overall wellness',
     isQuote: false
   },
   {
-    image: 'https://images.unsplash.com/photo-1608797178974-15b35a64ede9?w=1200&q=80',
+    bgGradient: 'from-teal-900 via-emerald-900 to-green-950',
     title: 'Premium Quality Seeds',
     subtitle: '100% organic and tested for purity - your health is our priority',
     isQuote: false
   },
   {
-    image: 'https://images.unsplash.com/photo-1606787366850-de6330128bfc?w=1200&q=80',
+    bgGradient: 'from-green-950 via-teal-900 to-emerald-900',
     title: 'Transform Your Health Naturally',
     subtitle: 'From heart care to immunity boost - find the perfect seeds for your goals',
     isQuote: false
@@ -34,43 +34,37 @@ const categories = [
     name: 'Heart Health Seeds',
     icon: Heart,
     path: '/products/heart-health',
-    color: 'from-red-500 to-pink-600',
-    image: 'https://images.pexels.com/photos/1295572/pexels-photo-1295572.jpeg?auto=compress&cs=tinysrgb&w=400'
+    color: 'from-red-500 to-pink-600'
   },
   {
     name: 'Brain Health Seeds',
     icon: Brain,
     path: '/products/brain-health',
-    color: 'from-purple-500 to-indigo-600',
-    image: 'https://images.pexels.com/photos/1435735/pexels-photo-1435735.jpeg?auto=compress&cs=tinysrgb&w=400'
+    color: 'from-purple-500 to-indigo-600'
   },
   {
     name: 'Diabetes Control Seeds',
     icon: Activity,
     path: '/products/diabetes-control',
-    color: 'from-blue-500 to-cyan-600',
-    image: 'https://images.pexels.com/photos/6489052/pexels-photo-6489052.jpeg?auto=compress&cs=tinysrgb&w=400'
+    color: 'from-blue-500 to-cyan-600'
   },
   {
     name: 'Bone Strength Seeds',
     icon: Bone,
     path: '/products/bone-strength',
-    color: 'from-amber-500 to-orange-600',
-    image: 'https://images.pexels.com/photos/4033324/pexels-photo-4033324.jpeg?auto=compress&cs=tinysrgb&w=400'
+    color: 'from-amber-500 to-orange-600'
   },
   {
     name: 'Immunity Boost Seeds',
     icon: Shield,
     path: '/products/immunity-boost',
-    color: 'from-green-500 to-emerald-600',
-    image: 'https://images.pexels.com/photos/4198933/pexels-photo-4198933.jpeg?auto=compress&cs=tinysrgb&w=400'
+    color: 'from-green-500 to-emerald-600'
   },
   {
     name: 'Weight Management Seeds',
     icon: Scale,
     path: '/products/weight-management',
-    color: 'from-teal-500 to-green-600',
-    image: 'https://images.pexels.com/photos/5503116/pexels-photo-5503116.jpeg?auto=compress&cs=tinysrgb&w=400'
+    color: 'from-teal-500 to-green-600'
   }
 ];
 
@@ -119,16 +113,11 @@ const Home = () => {
         {carouselSlides.map((slide, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
+            className={`absolute inset-0 transition-opacity duration-1000 bg-gradient-to-br ${slide.bgGradient} ${
               index === currentSlide ? 'opacity-100' : 'opacity-0'
             }`}
           >
-            <img
-              src={slide.image}
-              alt={`Slide ${index + 1}`}
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30" />
+            <div className="absolute inset-0 bg-black/30 backdrop-blur-[1px]" />
           </div>
         ))}
 
@@ -218,22 +207,13 @@ const Home = () => {
               <Link
                 key={category.name}
                 to={category.path}
-                className="group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+                className={`group relative aspect-square overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 bg-gradient-to-br ${category.color} p-4 flex flex-col items-center justify-center text-white text-center`}
               >
-                <div className="aspect-square relative">
-                  <img
-                    src={category.image}
-                    alt={category.name}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                  <div className={`absolute inset-0 bg-gradient-to-br ${category.color} opacity-70 group-hover:opacity-80 transition-opacity`} />
-
-                  <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-2">
-                    <Icon className="w-8 h-8 mb-2 group-hover:scale-110 transition-transform" />
-                    <h3 className="text-sm font-bold text-center leading-tight">{category.name}</h3>
-                    <p className="mt-1 text-xs opacity-90">Explore</p>
-                  </div>
+                <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                  <Icon className="w-7 h-7 text-white" />
                 </div>
+                <h3 className="text-sm font-bold leading-tight">{category.name}</h3>
+                <p className="mt-1 text-xs opacity-90 font-medium">Explore</p>
               </Link>
             );
           })}

@@ -1,6 +1,6 @@
 import { useWishlist } from '../context/WishlistContext';
 import { useCart } from '../context/CartContext';
-import { Heart, ShoppingCart, Trash2, ArrowLeft } from 'lucide-react';
+import { Heart, ShoppingCart, Trash2, ArrowLeft, Sprout } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -100,21 +100,18 @@ const Wishlist = () => {
               key={product.id}
               className="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-2xl transition-all duration-300 overflow-hidden group"
             >
-              <div className="relative overflow-hidden h-48">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              <div className="relative overflow-hidden p-4 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-gray-700 dark:to-gray-800 border-b border-gray-100 dark:border-gray-700 text-center">
+                <div className="w-12 h-12 mx-auto rounded-2xl bg-white dark:bg-gray-600 flex items-center justify-center shadow-sm mb-1 group-hover:scale-110 transition-transform">
+                  <Sprout className="w-6 h-6 text-green-600 dark:text-green-400" />
+                </div>
                 
                 {/* Remove from wishlist button */}
                 <button
                   onClick={() => handleRemoveFromWishlist(product.id)}
-                  className="absolute top-3 right-3 bg-white/90 hover:bg-white text-red-500 p-2 rounded-full shadow-lg transition-all transform hover:scale-110"
+                  className="absolute top-3 right-3 bg-white/90 dark:bg-gray-700/90 hover:bg-white text-red-500 p-2 rounded-full shadow-sm transition-all transform hover:scale-110"
                   title="Remove from wishlist"
                 >
-                  <Heart className="w-5 h-5 fill-current" />
+                  <Heart className="w-4 h-4 fill-current" />
                 </button>
               </div>
 

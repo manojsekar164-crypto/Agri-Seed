@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
-import { Trash2, Plus, Minus, ShoppingBag, ArrowRight } from 'lucide-react';
+import { Trash2, Plus, Minus, ShoppingBag, ArrowRight, Sprout } from 'lucide-react';
 
 const Cart = () => {
   const { cart, removeFromCart, updateQuantity, getTotalPrice, getTotalItems } = useCart();
@@ -41,11 +41,10 @@ const Cart = () => {
                 className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow"
               >
                 <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    className="w-24 h-24 object-cover rounded-lg"
-                  />
+                  <div className="w-20 h-20 bg-green-50 dark:bg-gray-700 rounded-xl flex flex-col items-center justify-center flex-shrink-0 border border-green-200 dark:border-gray-600 p-2 text-center">
+                    <Sprout className="w-7 h-7 text-green-600 dark:text-green-400 mb-1" />
+                    <span className="text-[10px] font-semibold text-gray-700 dark:text-gray-300 line-clamp-1 leading-tight">{item.name}</span>
+                  </div>
 
                   <div className="flex-1">
                     <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-1">

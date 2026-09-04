@@ -1,4 +1,4 @@
-import { ShoppingCart, Check, Heart, Info, Activity, Brain, Heart as HeartIcon, Bone, Shield, Scale, Sparkles, Gem } from 'lucide-react';
+import { ShoppingCart, Check, Heart, Info, Sprout, Activity, Brain, Heart as HeartIcon, Bone, Shield, Scale, Sparkles, Gem } from 'lucide-react';
 import { Product } from '../data/products';
 import { useCart } from '../context/CartContext';
 import { useWishlist } from '../context/WishlistContext';
@@ -51,64 +51,75 @@ const ProductCard = ({ product }: ProductCardProps) => {
 
   return (
     <>
-      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group border border-gray-100 dark:border-gray-700">
-        {/* Compact Image Section - Increased to h-32 for better visibility */}
+      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden group border border-gray-100 dark:border-gray-700 flex flex-col justify-between">
+        {/* Default Seed Card Header - No image, only seed name & badges */}
         <div 
-          className="relative overflow-hidden h-32 cursor-pointer bg-gradient-to-br from-green-50 to-emerald-50 dark:from-gray-700 dark:to-gray-600"
+          className="relative overflow-hidden p-4 cursor-pointer bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 dark:from-gray-800 dark:to-gray-700 border-b border-gray-100 dark:border-gray-700"
           onClick={() => setShowInfo(true)}
         >
-          <img
-            src={product.image}
-            alt={product.name}
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-          />
-          
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
-          
-          {/* Info Icon - Floating */}
-          <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <div className="bg-white/95 dark:bg-gray-800/95 rounded-full p-2 shadow-xl transform group-hover:scale-110 transition-transform">
-              <Info className="w-4 h-4 text-green-600 dark:text-green-400" />
-            </div>
-          </div>
-          
-          {/* Wishlist button - Top Right */}
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              handleWishlistToggle();
-            }}
-            className={`absolute top-3 right-3 p-2 rounded-full shadow-lg transition-all transform hover:scale-110 backdrop-blur-sm ${
-              isWishlisted || wishlistAdded
-                ? 'bg-red-500 text-white'
-                : 'bg-white/90 hover:bg-white text-gray-600 hover:text-red-500'
-            }`}
-            title={isWishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
-          >
-            <Heart 
-              className={`w-4 h-4 ${isWishlisted || wishlistAdded ? 'fill-current' : ''}`} 
-            />
-          </button>
-
-          {/* Category Badge with Icon */}
-          <div className="absolute top-3 left-3">
-            <div className="flex items-center space-x-1 bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm text-gray-800 dark:text-white px-3 py-1.5 rounded-full shadow-lg border border-gray-200 dark:border-gray-700">
-              {CategoryIcon && <CategoryIcon className={`w-4 h-4 ${categoryInfo.color}`} />}
+          {/* Top Actions: Category Badge, Info & Wishlist */}
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center space-x-1.5 bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm text-gray-800 dark:text-white px-2.5 py-1 rounded-full shadow-sm border border-gray-200 dark:border-gray-700">
+              {CategoryIcon && <CategoryIcon className={`w-3.5 h-3.5 ${categoryInfo.color}`} />}
               <span className="text-xs font-bold">{categoryInfo?.label}</span>
             </div>
+
+            <div className="flex items-center space-x-1.5">
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setShowInfo(true);
+                }}
+                className="p-1.5 rounded-full bg-white/90 dark:bg-gray-700/90 text-green-600 dark:text-green-400 hover:bg-white shadow-sm transition-all"
+                title="View Seed Details"
+              >
+                <Info className="w-4 h-4" />
+              </button>
+
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleWishlistToggle();
+                }}
+                className={`p-1.5 rounded-full shadow-sm transition-all transform hover:scale-110 ${
+                  isWishlisted || wishlistAdded
+                    ? 'bg-red-500 text-white'
+                    : 'bg-white/90 dark:bg-gray-700/90 text-gray-600 hover:text-red-500'
+                }`}
+                title={isWishlisted ? 'Remove from wishlist' : 'Add to wishlist'}
+              >
+                <Heart 
+                  className={`w-4 h-4 ${isWishlisted || wishlistAdded ? 'fill-current' : ''}`} 
+                />
+              </button>
+            </div>
+          </div>
+
+          {/* Default Seed Emblem & Seed Name */}
+          <div className="flex flex-col items-center text-center py-2">
+            <div className="w-12 h-12 rounded-2xl bg-white dark:bg-gray-700 shadow-sm border border-green-100 dark:border-gray-600 flex items-center justify-center mb-2 group-hover:scale-110 transition-transform duration-300">
+              <Sprout className="w-6 h-6 text-green-600 dark:text-green-400" />
+            </div>
+            <h3 className="text-lg font-bold text-gray-900 dark:text-white group-hover:text-green-600 dark:group-hover:text-green-400 transition-colors line-clamp-2">
+              {product.name}
+            </h3>
+            <span className="text-xs text-gray-500 dark:text-gray-400 mt-1 line-clamp-1">
+              {product.benefits || product.description}
+            </span>
           </div>
         </div>
 
-        {/* Content Section - Increased padding to p-4 */}
-        <div className="p-4">
-          {/* Product Name - Increased to text-lg */}
-          <h3 
-            className="text-lg font-bold text-gray-900 dark:text-white mb-4 line-clamp-1 cursor-pointer hover:text-green-600 dark:hover:text-green-400 transition-colors"
-            onClick={() => setShowInfo(true)}
-          >
-            {product.name}
-          </h3>
+        {/* Content Section */}
+        <div className="p-4 flex-1 flex flex-col justify-between">
+          <div className="mb-3">
+            <div className="flex flex-wrap gap-1 mb-2">
+              {product.nutrients.slice(0, 2).map((nutrient, idx) => (
+                <span key={idx} className="text-[11px] bg-green-100/80 dark:bg-green-900/30 text-green-800 dark:text-green-300 px-2 py-0.5 rounded font-medium">
+                  {nutrient}
+                </span>
+              ))}
+            </div>
+          </div>
 
           {/* Price and Action Row */}
           <div className="flex items-center justify-between pt-3 border-t border-gray-100 dark:border-gray-700">
@@ -116,7 +127,7 @@ const ProductCard = ({ product }: ProductCardProps) => {
               <span className="text-2xl font-bold text-green-600 dark:text-green-400">
                 ₹{product.price}
               </span>
-              <span className="text-sm text-gray-500 dark:text-gray-400 ml-1">/ pack</span>
+              <span className="text-xs text-gray-500 dark:text-gray-400 ml-1">/ pack</span>
             </div>
 
             <button
